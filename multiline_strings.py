@@ -203,13 +203,5 @@ sair = '''
 
 guia_do_usuario_completo = [aca_pro, bem_vindo, primeiros_passos, guia_do_usuário, formatar_referencias, eixos_de_pesquisa, tipos_de_referência, inf_processo_desenvolvimento1, inf_processo_desenvolvimento2, inf_processo_desenvolvimento3, inf_processo_desenvolvimento4, inf_processo_desenvolvimento5, inf_processo_desenvolvimento5, inf_processo_desenvolvimento6]
 
-def imprime_guia_do_usuario(guia):
-    
-    for processo in guia:
-        print(processo)
-        sleep(1)
-        continua = input("Continuar? [S/N]  ")
-        if continua.upper() == "N":
-            print("Saindo do guia. A execução será interrompida. Até mais!")
-            break
-  
+
+processo_de_desenvolvimento = [inf_processo_desenvolvimento1, inf_processo_desenvolvimento2, inf_processo_desenvolvimento3, inf_processo_desenvolvimento4, inf_processo_desenvolvimento5, inf_processo_desenvolvimento5, inf_processo_desenvolvimento6]
