@@ -93,6 +93,7 @@ def formatar_referencias(menu):
                     print(formatacao)
                 elif opcao_menu == 4:
                     print("Websites")
+                    print(tipo_de_site())
                 else:
                     print("Monografias, dissertações ou teses")
                     formatacao = monografia_dissertacao_tese()
@@ -264,15 +265,14 @@ def tipo_de_site():
         
     if tipo_site.upper() == "J":
         print("\n\nJornal")
-        print(siteDeJornal())
+        print(site_de_jornal())
         
     elif tipo_site.upper() == "R":
         print("\n\nRevistas eletrônicas")
-        print(siteDeRevistasEletronicas())
-        
+        print(sites_revistas_eletronicas)        
     elif tipo_site.upper() == "P":
         print("\n\nPublicações periódicas")
-        print(sitesDePublicacoesPeriodicas())
+        print(sites_publicacoes_periodicas())
         
     elif tipo_site.upper() == "I":
         print("\n\nPágina inicial de sites")
@@ -296,6 +296,7 @@ def dia_mes_ano():
         return dia, mes, ano
 
 def site_de_jornal():
+    
     titulo_materia = input("Digite o título da matéria: ")
     nome_jornal = input("Digite o nome do jornal: ")
     url = input("Digite a url: ")
@@ -341,3 +342,63 @@ def site_de_jornal():
         return f"Referência formatada: \n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
     else:
         return f"Referência formatada: \n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+    
+def sites_revistas_eletronicas():
+    nome_autor = nome_e_sobrenome()
+    titulo_do_artigo = input("Digite o título do artigo: ")
+    titulo_da_revista = input("Digite o título da revista: ")
+    local_publicacao = input("Digite o local de publicação: ")
+    volume_exemplar = int(input("Digite o número do exemplar: ")) 
+    numero_exemplar = int(input("Digite o número do exemplar: "))
+    paginas_inicial_final = input("Digite as páginas inicial e final <x - y>: ")
+    mes_publicacao = input("Digite o mês de publicação: ")
+    ano_publicacao = int(input("Digite o ano de publicação: "))
+    url = input("Cole aqui a url (link) da pesquisa: ")
+    dia_mes_ano_acesso = dia_mes_ano()
+    return f"Referência formatada: \n{nome_autor}. {titulo_do_artigo}. {titulo_da_revista}, {local_publicacao}, v. {volume_exemplar}, n. {numero_exemplar}, p. {paginas_inicial_final}, {mes_publicacao}, {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_mes_ano_acesso}."
+
+def sites_publicacoes_periodicas():
+    titulo_materia = input("Digite o título da matéria: ")
+    nome_site = input("Digite o nome do site: ")
+    ano_publicacao = int(input("Digite o ano de publicação: "))
+    url = input("Cole aqui a url (link) da pesquisa: ")
+    dia_mes_ano_acesso = dia_mes_ano()
+        
+    tem_autor = input("Você tem acesso ao nome do autor [S/N]? ")
+    if tem_autor.upper() == "S":
+        nome_do_autor = nome_e_sobrenome()
+            
+        return f"Referência formatada: \n{nome_do_autor}. {titulo_materia}. {nome_site}, {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_mes_ano_acesso}."
+        
+    else:
+        return "Referência formatada: \n \(tituloMateria.uppercased()). \(nomeSite), \(anoPublicacao). Disponível em: \(url). \(diaMesAno)"  
+    
+def pagina_inicial():
+        autor_organizacao = input("Digite o nome do autor ou organização: ")
+        nome_site = input("Digite o nome do site: ")
+        ano_publicacao = int(input("Digite o ano de publicação: "))
+        ementa = input("Digite a descrição da pesquisa: ")
+        url = input("Cole aqui a url (link) da pesquisa: ")
+        dia_mes_ano_acesso = dia_mes_ano()
+        
+        return f"Referência formatada: {autor_organizacao.upper()}, {nome_site}, {ano_publicacao}. {ementa}. Disponível em: {url}. Acesso em: {dia_mes_ano_acesso}."
+    
+def dicionariosOuEnciclopedias():
+        titulo_verbete_conceito = input("Digite o título do verbete/conceito: ")
+        nome_da_enciclopedia_dicionario = input("Digite o nome da enciclopédia/dicionário: ")
+        autor_editora = input("Digite o responsável pela publicação ou a editora: ")
+        ano_publicacao = int(input("Digite o ano de publicação: "))
+        url = input("Cole aqui a url (link) da pesquisa: ")
+        dia_mes_ano_acesso = dia_mes_ano()
+                
+        return f"Referência formatada: \n {titulo_verbete_conceito.upper()}. In: {nome_da_enciclopedia_dicionario}. {autor_editora}, {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_mes_ano_acesso}."
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
