@@ -126,7 +126,7 @@ inf_processo_desenvolvimento1 = '''
     
         Desenvolver trabalhos acadêmicos é uma coisa bem séria e importante, mas nem sempre é fácil começar. Então, esse mini guia vai te mostrar como facilitar esse processo.
         
-        A primeira coisa a se lembrar é: tudo é formal e tem que ser em um formato específico, delimitado pela ABNT. "Ah, mas esse meu trabalho nem precisa.", você pode me dizer. Ok, mas uma hora vai precisar, e quanto mais você praticar, mais fácil vai ser. Então, que tal um mini passo a passo? 
+        A primeira coisa a se lembrar é: tudo é formal e tem que ser em um formato específico, delimitado pela ABNT. "Ah, mas esse meu trabalho nem precisa.", você pode me dizer. Tudo bem, mas uma pode ser que precise, e quanto mais você praticar, mais fácil vai ser. Então, que tal um mini passo a passo? 
          
          
     '''
@@ -205,3 +205,35 @@ guia_do_usuario_completo = [aca_pro, bem_vindo, primeiros_passos, guia_do_usuár
 
 
 processo_de_desenvolvimento = [inf_processo_desenvolvimento1, inf_processo_desenvolvimento2, inf_processo_desenvolvimento3, inf_processo_desenvolvimento4, inf_processo_desenvolvimento5, inf_processo_desenvolvimento5, inf_processo_desenvolvimento6]
+
+fontes_pesquisa_academica = '''
+
+Para fazer um bom trabalho, é importante se basear em fontes realmente confiáveis. A seguir, você encontra um apanhado de sites que podem te ajudar a encontrar suas referências:
+
+    - Scielo
+    - Google acadêmico
+    - ERIC
+    - Portal da Capes
+    - Academia.edu
+    - BDTD
+    - Redalyc
+    - Biblioteca digital de tedes e dissertações da USP
+    - LUME (UFRGS)
+    
+'''
+
+buscar_referencias = '''
+
+Está com dúvida sobre como pesquisar o seu assunto? Quel tal usar alguma dessas palavras chave?
+
+    - estudo de caso
+    - notícias
+    - contexto internacional
+    - impactos
+    - motivação
+    - problemática
+    - legislação
+    - desafios
+    - perpspectivas
+    
+'''
