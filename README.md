@@ -15,6 +15,7 @@ Ah! O AcaPro é um programa **CLI** em Python. Não se assuste quando eu digo CL
 ### Rode o programa em um local que aceite dados de entrada.
 
 Para isso, acesse a pasta do código fonte e chame, no terminal, o arquivo main.py, digitando: 
+
     ```
     python main.py
 
