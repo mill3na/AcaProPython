@@ -59,30 +59,30 @@ def seleciona_opcao_menu_principal(menu):
                     break
             
             elif (int(opcao_menu) > len(menu) or int(opcao_menu) <= 0):
-                print("\nOpção inválida! Tente novamente.\n\n")
+                exibe_texto_formatado("\nOpção inválida! Tente novamente.\n\n", "vermelho")
             
             else:
                 if opcao_menu == 1:
                     imprime_multiline_string(guia_do_usuario_completo)
                     
                 elif opcao_menu == 2:
-                    print("\n\nInformações sobre o processo de desenvolvimento")
+                    exibe_texto_formatado("\n\nInformações sobre o processo de desenvolvimento", "verde")
                     imprime_multiline_string(processo_de_desenvolvimento)
                     sleep(1)
                     
                 elif opcao_menu == 3:
-                    print("\n\nBuscar referências")
+                    exibe_texto_formatado("\n\nBuscar referências", "verde")
                     print(buscar_referencias)
                     sleep(1)
                     
                 elif opcao_menu == 4:
-                    print("\n\nFormatar referência")
+                    exibe_texto_formatado("\n\nFormatar referência", "verde")
                     texto_formatado = formatar_referencias(menu_referencias)
                     exibe_texto_formatado(texto_formatado, "amarelo")
                     sleep(1)
                     
                 elif opcao_menu == 5:
-                    print("\n\nFormatar referência e salvar automaticamente")
+                    exibe_texto_formatado("\n\nFormatar referência e salvar automaticamente", "verde")
                     texto_formatado = formatar_referencias(menu_referencias)
                     exibe_texto_formatado(texto_formatado, "amarelo")
                     nome_do_arquivo = criar_arquivo_txt()
@@ -90,13 +90,14 @@ def seleciona_opcao_menu_principal(menu):
                     sleep(1)
                     
                 elif opcao_menu == 6:
-                    print("\n\nExibir fontes confiáveis para pesquisa acadêmica")
+                    exibe_texto_formatado("\n\nExibir fontes confiáveis para pesquisa acadêmica", "verde")
                     print(fontes_pesquisa_academica)
                     sleep(1)
                     
                     
         except ValueError:
-            print("\nVocê digitou algo no formato errado. Por favor, tente novamente, digitando números inteiros.\n\n")
+            exibe_texto_formatado("\nVocê digitou algo no formato errado. Por favor, tente novamente, digitando números inteiros.\n\n", "vermelho")
+            print()
             
         except:
             print(Exception)
@@ -124,7 +125,7 @@ def formatar_referencias (menu):
                     continua_loop = False
             
             elif (int(opcao_menu) > len(menu) or int(opcao_menu) <= 0):
-                print("\nOpção inválida! Tente novamente.\n\n")
+                exibe_texto_formatado("\nOpção inválida! Tente novamente.\n\n", "vermelho")
             
             else:
                 if opcao_menu == 1:
