@@ -10,4 +10,6 @@
 # E muito mais. Consulte as informações de uso ao longo da execução no guia do usuário ou no README. :)
 
 from functions import *
+print(aca_pro)
+sleep(0.5)
 seleciona_opcao_menu_principal(menu_principal)

@@ -38,9 +38,9 @@ Seja bem vindo ao guia do usuário. Aqui você encontra todas as informações p
     
 primeiros_passos = '''
 
-     ► Primeiros passos _______________
+     \033[32m► Primeiros passos _______________\033[m
     
-        Ao iniciar a execução, é importante que você esteja em um ambiente que aceite dados de entrada. Por exemplo: o output do VsCode não aceita entrada de dados por parte do usuário, e o programa precisa de algumas informações para funcionar como deve. Você pode colocar o script para rodar no cmd ou terminal integrado sem se preocupar, pois vai ser sucesso.
+        Ao iniciar a execução, é importante que você esteja em um ambiente que aceite dados de entrada, pois o programa precisa de algumas informações para funcionar como deve
         
         O primeiro menu te dá as seguintes opções:
                     
@@ -56,7 +56,7 @@ primeiros_passos = '''
 
             [5]: Sair
         
-        A última opção do primeiro menu é "Sair", e isso interrompe a execução desse script, ok? Outra coisa a se lembrar é: sempre acesse as opções pelo número antes dela.
+        A opção "Sair" interrompe a execução desse script, ok? Outra coisa a se lembrar é: sempre acesse as opções pelo número antes dela.
         
         De acordo com a opção escolhida, um novo menu abrirá e/ou novas informações podem ser solicitadas. A lógica é basicamente a mesma para tudo que segue após isso. 
         
@@ -68,16 +68,16 @@ Agora, vamos ver cada opção, separadamente.
     '''
 
 guia_do_usuário = '''
-     ► Guia do usuário _______________
+     \033[33m► Guia do usuário _______________\033[m
      
-     O Guia do usuário exibirá o manual do programa (este aqui), e informa ao usuário como usar corretamente todas as funcionalidades que o AcaPro tem a oferecer. Depois de exibir este guia, o programa será encerrado.
-
+     O Guia do usuário exibirá o manual do programa (este aqui), e informa ao usuário como usar corretamente todas as funcionalidades que o AcaPro tem a oferecer. 
+     
 
 '''
 
 formatar_referencias = '''
 
-     ► Formatar referências _______________
+     \033[33m► Formatar referências _______________\033[m
 
         Ao chegar aqui, outro menu será exibido: 
 
@@ -91,9 +91,9 @@ formatar_referencias = '''
 
             [5]: Monografia, dissertação ou tese.
 
-            Cada opção escolhida levará à uma nova parte do programa, que solicitará informações diferentes. Sempre se atente ao tipo de entrada que o programa solicita, certo? Elas podem ser do tipo inteiro ou do tipo string (texto). Por exemplo, ao solicitar a formatação de uma referência retirada de um livro, o programa perguntará a quantidade de autores, e você deve digitar um inteiro. Logo depois, dependendo da resposta, ele pergunta o nome dos autores, e você deve digitar uma String (texto).
+            Cada opção escolhida levará à uma nova parte do programa, que solicitará informações diferentes. Sempre se atente ao \033[33mtipo de entrada que o programa solicita\033[m, certo? Elas podem ser do tipo inteiro ou do tipo string (texto). Por exemplo, ao solicitar a formatação de uma referência retirada de um livro, o programa perguntará a quantidade de autores, e você deve digitar um inteiro. Logo depois, dependendo da resposta, ele pergunta o nome dos autores, e você deve digitar uma String (texto).
 
-            Quando o nome do autor for solicitado, digite somente o primeiro, e não o nome completo. O sobrenome será solicitado em seguida.
+            \033[33mQuando o nome do autor for solicitado, digite somente o primeiro, e não o nome completo. O sobrenome será solicitado em seguida.\033[m
 
             O AcaPro é preparado para ajustar alguns pequenos detalhes do seu texto, como a utilização da primeira letra maiúscula, mas erros de digitação devem ser evitados, pois não temos corrigir nomes próprios ou de revistas, por exemplo, certo? Sempre tome o cuidado de oferecer as informações corretas.
 
@@ -102,16 +102,16 @@ formatar_referencias = '''
 
 eixos_de_pesquisa = '''
 
-     ► Buscar eixos de Pesquisa _______________
+     \033[33m► Buscar eixos de Pesquisa _______________\033[m
 
-        Nesta seção, o AcaPro irá te sugerir algumas grandes áreas e palavras chave que podem ajudar a encontrar um bom tema. Depois da exibição de sugestões, o programa é encerrado.
+        Nesta seção, o AcaPro irá te sugerir algumas grandes áreas e palavras chave que podem ajudar a encontrar um bom tema.
 
 
 '''
 
 tipos_de_referência = '''
 
-     ► Tipos de referêncua _______________
+     \033[33m► Tipos de referência _______________\033[m
 
         Ao escolher esta opção, será exibido um mini guia sobre cada tipo de referência que o AcaPro formata (e não todas as existentes). Esta seção é ideal para quem não tem certeza em que tipo de material está fazendo as suas pesquisas.
 
@@ -122,7 +122,7 @@ tipos_de_referência = '''
 
 inf_processo_desenvolvimento1 = '''
 
-     ► Informações sobre o processo de desenvolvimento _______________
+     \033[33m► Informações sobre o processo de desenvolvimento _______________\033[m
     
         Desenvolver trabalhos acadêmicos é uma coisa bem séria e importante, mas nem sempre é fácil começar. Então, esse mini guia vai te mostrar como facilitar esse processo.
         
@@ -133,7 +133,7 @@ inf_processo_desenvolvimento1 = '''
     
 inf_processo_desenvolvimento2 = '''
 
-    0. Passo mais importante de todos os tempos
+    \033[33m0. Passo mais importante de todos os tempos\033[m
     
     Escolha um bom orientador. Um BOM MESMO. 
     Tenha uma rede de apoio. Você (muito) provavelmente vai precisar, em algum momento.
@@ -143,7 +143,7 @@ inf_processo_desenvolvimento2 = '''
 
 inf_processo_desenvolvimento3 = '''
 
-    1. Saiba o que você está escrevendo.
+    \033[33m1. Saiba o que você está escrevendo.\033[m
     
     É uma resenha? Um artigo? Uma dissertação? Um relatório?
     Defina o tipo de texto e busque as referências certas para que ele seja bem estruturado, combinado? Se tem dúvida, pergunte ao seu professor orientador.
@@ -155,9 +155,9 @@ inf_processo_desenvolvimento3 = '''
 
 inf_processo_desenvolvimento4 = ''''
 
-    2. Define teu tema sem medo de ser feliz!
+    \033[33m2. Define teu tema sem medo de ser feliz!\033[m
     
-    Faz pesquisa, vê notícia, observa os conteúdos que são mais comentados (e que têm mais referência) e pensa em uma grande área. Tenta relacionar com o que você gosta de estudar que fica muito mais massa. Temas multidisciplinares são muito bons também, mas define esse negócio direito, tá? Vai se ambientando primeiro e, dependendo do que você encontrar / se identificar, define um tema, e, depois, um subtema.
+    Faz pesquisa, vê notícia, observa os conteúdos que são mais comentados (e que têm mais referência) e pensa em uma grande área. Tenta relacionar com o que você gosta de estudar que fica muito mais massa. Temas multidisciplinares são muito bons também, mas define com cuidado. Vai se ambientando primeiro e, dependendo do que você encontrar / se identificar, escolhe um tema e, depois, um subtema.
     
     O subtema é legal pra afunilar mais a tua pesquisa! Se isso não estiver explícito no tema (nicho, afunilamento), um subtema é bem legal pra deixar bem claro.
     
@@ -166,9 +166,9 @@ inf_processo_desenvolvimento4 = ''''
 
 inf_processo_desenvolvimento4 = ''''
 
-    3. Hora de começar a escrever.
+    \033[33m3. Hora de começar a escrever.\033[m
     
-    Achou informações sufucientes pra se embasar (pelo menos um pouco) e já decidiu tudo que precisava ser decidido? Então, tá esperando o quê? Começa a escrever tendo em mente tudo aquilo que foi pesquisado e sem medo de voltar a consultar tuas fontes de novo. Mas, pelo amor de tudo que é mais lindo nesse mundo, não comete plágio! Cuidado com essas referências, coloca os créditos direitinho, porque não é nada legal pegar o trabalho dos outros, beleza? 
+    Achou informações sufucientes pra se embasar (pelo menos um pouco) e já decidiu tudo que precisava ser decidido? Então, já dá para começar a escrever tendo em mente tudo aquilo que foi pesquisado e sem medo de voltar a consultar tuas fontes de novo. Mas, cuidado com o plágio! Anota as referências, coloca os créditos direitinho, porque não é nada legal pegar o trabalho dos outros, beleza? 
     
     Importante se atentar à formatação desde o início também (pelo menos o basicão), pra não te estressar muito no final, pode ser?
     
@@ -179,7 +179,7 @@ inf_processo_desenvolvimento4 = ''''
 
 inf_processo_desenvolvimento5 ='''
 
-    4. Últimos detalhes pro lançamento do foguete!
+    \033[33m4. Últimos detalhes pro lançamento do foguete!\033[m
     
     Aquela revisada básica e tal. Cansou muito, enjoou do teu próprio trabalho? Pede pra um amigo de confiança (e crítico na medida) ler pra dar uma força. Conte com a sua rede de apoio.
     
@@ -188,15 +188,15 @@ inf_processo_desenvolvimento5 ='''
 '''
 
 inf_processo_desenvolvimento6 = '''
-    5. Finaliza com sucesso.
+    \033[33m5. Finaliza com sucesso.\033[m
     
-    Tudo certinho? Então massa demais. Parabéns, você conseguiu!!!
+    Tudo certinho? Então massa demais. \033[33mParabéns, você conseguiu!!!\033[m
     
 '''
 
 sair = '''
 
-     ► Sair _______________
+     \033[33m► Sair _______________\033[m
 
         Escolher essa opção encerra o programa. Esperamos que você volte a usá-lo!
 '''
@@ -208,7 +208,7 @@ processo_de_desenvolvimento = [inf_processo_desenvolvimento1, inf_processo_desen
 
 fontes_pesquisa_academica = '''
 
-Para fazer um bom trabalho, é importante se basear em fontes realmente confiáveis. A seguir, você encontra um apanhado de sites que podem te ajudar a encontrar suas referências:
+\033[33mPara fazer um bom trabalho, é importante se basear em fontes realmente confiáveis.\033[m A seguir, você encontra um apanhado de sites que podem te ajudar a encontrar suas referências:
 
     - Scielo
     - Google acadêmico
@@ -224,7 +224,7 @@ Para fazer um bom trabalho, é importante se basear em fontes realmente confiáv
 
 buscar_referencias = '''
 
-Está com dúvida sobre como pesquisar o seu assunto? Quel tal usar alguma dessas palavras chave?
+\033[33mEstá com dúvida sobre como pesquisar o seu assunto? Quel tal usar alguma dessas palavras chave?\033[m
 
     - estudo de caso
     - notícias

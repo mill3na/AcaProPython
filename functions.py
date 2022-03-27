@@ -1,3 +1,4 @@
+from csv import excel
 import imp
 from pandas import array
 from multiline_strings import *
@@ -5,10 +6,10 @@ from time import sleep
 
 menu_principal = ["Guia do usuário", "Informações sobre o processo de desenvolvimento", "Buscar referências", "Formatar referência", "Formatar referência e salvar automaticamente", "Exibir fontes confiáveis para pesquisa acadêmica", "Sair"]
 
-menu_referencias = ["Livro", "Revistas ou periódicos", "Artigos em eventos", "Websites", "Monografias, dissertações ou teses", "Voltar", "Sair"]
+menu_referencias = ["Livro", "Revistas ou periódicos", "Artigos em eventos", "Websites", "Monografias, dissertações ou teses", "Voltar"]
 
 def exibe_menu(menu):
-    
+    print("\n")
     for index, opcao in enumerate(menu):
         print(f"[{index + 1}] {opcao}.")
 
@@ -28,16 +29,33 @@ def exibe_texto_formatado(mensagem, cor = "branco"):
     else:
         print(f"{mensagem}\n\n")
     
-
+def criar_arquivo_txt(nome_do_arquivo = "Referencias formatadas"):
+    try: 
+        novo_arquivo = open(nome_do_arquivo, "a")
+        novo_arquivo.close()
+        return nome_do_arquivo
+    except:
+        print("Algo deu errado na criação do arquivo. Tente novamente.")
+    
+def escrever_no_arquivo_txt(texto_a_ser_inserido, nome_do_arquivo = "Referencias formatadas"):
+    try:
+        arquivo_txt = open(nome_do_arquivo, "a")
+        arquivo_txt.write(f"\n\n{texto_a_ser_inserido}")
+        arquivo_txt.close()
+        exibe_texto_formatado("Referência salva com sucesso! :)", "azul")
+    except:
+        print("Não foi possível salvar a referência! Por favor, armazene os dados em outro local para que a referência não seja perdida.")    
+    
 def seleciona_opcao_menu_principal(menu):
     continue_loop = True
     formatacao =  ""
     while(continue_loop):
         exibe_menu(menu)
         try:
-            opcao_menu = int(input("Digite a sua opção: "))
+            opcao_menu = int(input("\nDigite a sua opção: "))
             if opcao_menu == len(menu):
                     print("\nSaindo do sistema. Até logo!\n\n")
+                    sleep(1)
                     break
             
             elif (int(opcao_menu) > len(menu) or int(opcao_menu) <= 0):
@@ -50,27 +68,32 @@ def seleciona_opcao_menu_principal(menu):
                 elif opcao_menu == 2:
                     print("\n\nInformações sobre o processo de desenvolvimento")
                     imprime_multiline_string(processo_de_desenvolvimento)
+                    sleep(1)
                     
                 elif opcao_menu == 3:
                     print("\n\nBuscar referências")
                     print(buscar_referencias)
+                    sleep(1)
                     
                 elif opcao_menu == 4:
                     print("\n\nFormatar referência")
                     texto_formatado = formatar_referencias(menu_referencias)
                     exibe_texto_formatado(texto_formatado, "amarelo")
+                    sleep(1)
                     
                 elif opcao_menu == 5:
                     print("\n\nFormatar referência e salvar automaticamente")
+                    texto_formatado = formatar_referencias(menu_referencias)
+                    exibe_texto_formatado(texto_formatado, "amarelo")
+                    nome_do_arquivo = criar_arquivo_txt()
+                    escrever_no_arquivo_txt(texto_formatado, nome_do_arquivo)
+                    sleep(1)
                     
                 elif opcao_menu == 6:
                     print("\n\nExibir fontes confiáveis para pesquisa acadêmica")
                     print(fontes_pesquisa_academica)
-                    
-                elif opcao_menu == 7:
-                    print("Saindo da aplicação...")
                     sleep(1)
-                    continue_loop = False
+                    
                     
         except ValueError:
             print("\nVocê digitou algo no formato errado. Por favor, tente novamente, digitando números inteiros.\n\n")
@@ -88,13 +111,13 @@ def imprime_multiline_string (multiline_string, first_element=0):
             sleep(1)
             break
 
-def formatar_referencias(menu):
+def formatar_referencias (menu):
     formatacao = ""
     continua_loop = True
     while(continua_loop):
         exibe_menu(menu)
         try:
-            opcao_menu = int(input("Digite a sua opção: "))
+            opcao_menu = int(input("\nDigite a sua opção: "))
             if opcao_menu == len(menu):
                     print("\n\nVoltando ao menu principal...")
                     sleep(1)
@@ -107,22 +130,32 @@ def formatar_referencias(menu):
                 if opcao_menu == 1:
                     exibe_texto_formatado("\n\nLivro", "verde")
                     formatacao = quantidade_de_autores()
+                    sleep(1)
+                    continua_loop = False
                 
                 elif opcao_menu == 2:
                     exibe_texto_formatado("\n\nRevistas ou periódicos", "verde")
                     formatacao = revistasOuPeriodicos()
+                    sleep(1)
+                    continua_loop = False
                 
                 elif opcao_menu == 3:
                     exibe_texto_formatado("\n\nArtigos em eventos", "verde")
                     formatacao = artigo_em_evento()
+                    sleep(1)
+                    continua_loop = False
                 
                 elif opcao_menu == 4:
                     exibe_texto_formatado("\n\nWebsites", "verde")
                     formatacao = tipo_de_site()
+                    sleep(1)
+                    continua_loop = False
                 
                 else:
                     exibe_texto_formatado("\n\nMonografias, dissertações ou teses", "verde")
                     formatacao = monografia_dissertacao_tese()
+                    sleep(1)
+                    continua_loop = False
                
         except ValueError:
             print("\nVocê digitou algo no formato errado. Por favor, tente novamente, digitando números inteiros.\n\n")
@@ -272,12 +305,12 @@ def informacoes_basicas_monografia_dissertacao_tese():
 
     temSubtitulo = input("Esse trabalho tem subtítulo [S/N]? ")
     
-    if temSubtitulo.uppercased() == "S":
-        subtituloTrabalho = input("Digite o subtítulo: ")
-        return f"\n{titulo_trabalho}: {subtituloTrabalho}. {ano_apresentacao}. {numero_paginas}. {categoria} - {instituição}, {local_publicacao}, {ano_defesa}."
+    if temSubtitulo.upper() == "S":
+        subtitulo_trabalho = input("Digite o subtítulo: ")
+        return f"\n{titulo_trabalho}: {subtitulo_trabalho}. {ano_apresentacao}. {numero_paginas}. {categoria} - {instituição}, {local_publicacao}, {ano_defesa}."
     
     else:
-        return f"\(tituloTrabalho). \(anoApresentacao). p. \(numeroPaginas). \(categoria) - \(instituição), \(localPublicacao), \(anoDefesa)."
+        return f"{titulo_trabalho}. {ano_apresentacao}. p. {numero_paginas}. {categoria} - {instituição}, {local_publicacao}, {ano_defesa}."
 
 def monografia_dissertacao_tese():
     nome_sobrenome = nome_e_sobrenome()
@@ -285,7 +318,7 @@ def monografia_dissertacao_tese():
     return f"\n\n{nome_sobrenome}. {informacoes_complementares}"
 
 def tipo_de_site():
-    tipo_site = input("Digite o tipo de site de acordo com o padrão a seguir: \n[J]: Referências de sites de jornal;\n[R]: Referências de site de revistas eletrônicas;\n[P]: Referências de sites de publicação periódica;\n[I]: Referências de página inicial de sites;\n[E]: Referências de endereços eletrônicos ou enciclopédias ")
+    tipo_site = input("Digite o tipo de site de acordo com o padrão a seguir: \n[J]: Referências de sites de jornal;\n[R]: Referências de site de revistas eletrônicas;\n[P]: Referências de sites de publicação periódica;\n[I]: Referências de página inicial de sites;\n[E]: Referências de endereços eletrônicos ou enciclopédias.\n ")
         
     if tipo_site.upper() == "J":
         print("\n\nJornal")
@@ -293,7 +326,8 @@ def tipo_de_site():
         
     elif tipo_site.upper() == "R":
         print("\n\nRevistas eletrônicas")
-        print(sites_revistas_eletronicas)        
+        print(sites_revistas_eletronicas)  
+              
     elif tipo_site.upper() == "P":
         print("\n\nPublicações periódicas")
         print(sites_publicacoes_periodicas())
@@ -312,61 +346,63 @@ def tipo_de_site():
 def formata_mes(mes_acesso):
     return f"{mes_acesso[0:3].lower()}"
 
-def dia_mes_ano():
-        dia = int(input("Digite o dia de acesso com dois algarismos: "))
-        mes = input("Digite o mês de acesso: ")
-        ano = input("Digite o ano de acesso: ")
+def dia_mes_ano(acesso_ou_publicacao):
+        dia = int(input(f"Digite o dia de {acesso_ou_publicacao} com dois algarismos: "))
+        mes = input(f"Digite o mês de {acesso_ou_publicacao}: ")
+        ano = input(f"Digite o ano de {acesso_ou_publicacao}: ")
                
         return dia, mes, ano
 
 def site_de_jornal():
-    
-    titulo_materia = input("Digite o título da matéria: ")
-    nome_jornal = input("Digite o nome do jornal: ")
-    url = input("Digite a url: ")
-    dia_publicacao, mes_publicacao, ano_publicacao = dia_mes_ano()
-    dia_acesso, mes_acesso, ano_acesso = dia_mes_ano()
-    mes_acesso = formata_mes()
-    
-    autoria = input("Você tem acesso ao nome do autor da matéria [S/N]? ")
-    cidade = input("Você tem acesso à cidade de publicação [S/N]? ")
-    secao = input("Sua pesquisa está contida em alguma seção [S/N]?")
-    if autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "S" and secao.upper() == "S":
-        autoria_conhecida = nome_e_sobrenome()
-        cidade_publicacao = input("Digite a cidade de publicação: ")
-        secao = input("Digite a seção da sua pesquisa: ")
-        return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+    try:
+        titulo_materia = input("Digite o título da matéria: ")
+        nome_jornal = input("Digite o nome do jornal: ")
+        url = input("Digite a url: ")
+        dia_publicacao, mes_publicacao, ano_publicacao = dia_mes_ano()
+        dia_acesso, mes_acesso, ano_acesso = dia_mes_ano()
+        mes_acesso = formata_mes()
+        
+        autoria = input("Você tem acesso ao nome do autor da matéria [S/N]? ")
+        cidade = input("Você tem acesso à cidade de publicação [S/N]? ")
+        secao = input("Sua pesquisa está contida em alguma seção [S/N]?")
+        if autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "S" and secao.upper() == "S":
+            autoria_conhecida = nome_e_sobrenome()
+            cidade_publicacao = input("Digite a cidade de publicação: ")
+            secao = input("Digite a seção da sua pesquisa: ")
+            return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
 
-    
-    elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "S" and secao.upper() == "N":
-        autoria_conhecida = nome_e_sobrenome()
-        cidade_publicacao = input("Digite a cidade de publicação: ")
-        return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
-    elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "N" and secao.upper() == "S":
-        autoria_conhecida = nome_e_sobrenome()
-        secao = input("Digite a seção da sua pesquisa: ")
-        return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
-    elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "N" and secao.upper() == "N":
-        autoria_conhecida = nome_e_sobrenome()
-        return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}.  Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
-    elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "S" and secao.upper() == "S":
-        cidade_publicacao = input("Digite a cidade de publicação: ")
-        secao = input("Digite a seção da sua pesquisa: ")
-        return f"\n{titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
-    elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "S" and secao.upper() == "N":
-        cidade_publicacao = input("Digite a cidade de publicação: ")
-        return f"\n{titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
-    elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "N" and secao.upper() == "S":
-        secao = input("Digite a seção da sua pesquisa: ")
-        return f"\n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    else:
-        return f"\n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
-    
+        
+        elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "S" and secao.upper() == "N":
+            autoria_conhecida = nome_e_sobrenome()
+            cidade_publicacao = input("Digite a cidade de publicação: ")
+            return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        
+        elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "N" and secao.upper() == "S":
+            autoria_conhecida = nome_e_sobrenome()
+            secao = input("Digite a seção da sua pesquisa: ")
+            return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        
+        elif autoria_conhecida.upper() == "S" and cidade_publicacao.upper() == "N" and secao.upper() == "N":
+            autoria_conhecida = nome_e_sobrenome()
+            return f"\n{autoria_conhecida}. {titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}.  Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        
+        elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "S" and secao.upper() == "S":
+            cidade_publicacao = input("Digite a cidade de publicação: ")
+            secao = input("Digite a seção da sua pesquisa: ")
+            return f"\n{titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        
+        elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "S" and secao.upper() == "N":
+            cidade_publicacao = input("Digite a cidade de publicação: ")
+            return f"\n{titulo_materia}. {nome_jornal}, {cidade_publicacao}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        
+        elif autoria_conhecida.upper() == "N" and cidade_publicacao.upper() == "N" and secao.upper() == "S":
+            secao = input("Digite a seção da sua pesquisa: ")
+            return f"\n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Seção {secao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+        else:
+            return f"\n{titulo_materia}. {nome_jornal}, {dia_publicacao} {mes_publicacao}. {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_acesso} {mes_acesso}. {ano_acesso}."
+    except:
+        exibe_texto_formatado("Algo deu errado ao formatar a referência do jornal!", "vermelho")
+        
 def sites_revistas_eletronicas():
     nome_autor = nome_e_sobrenome()
     titulo_do_artigo = input("Digite o título do artigo: ")
@@ -417,12 +453,4 @@ def dicionariosOuEnciclopedias():
                 
         return f"\n{titulo_verbete_conceito.upper()}. In: {nome_da_enciclopedia_dicionario}. {autor_editora}, {ano_publicacao}. Disponível em: {url}. Acesso em: {dia_mes_ano_acesso}."
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
